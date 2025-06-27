@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Watch Naruto - AnyWatching</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: white;
+      text-align: center;
+    }
+    .title {
+      font-size: 3rem;
+      padding: 30px 0;
+    }
+    .video-container {
+      position: relative;
+      width: 80%;
+      margin: auto;
+      border: 5px solid #8b4513;
+      border-radius: 10px;
+      background: black;
+    }
+    video {
+      width: 100%;
+      height: auto;
+    }
+    .episode-list {
+      margin-top: 30px;
+    }
+    .episode-title {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .episode-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .episode-buttons button {
+      width: 50px;
+      height: 50px;
+      background-color: #8b4513;
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="title">AnyWatching</div>
+
+  <div class="video-container">
+    <video id="player" controls>
+      <source src="episodes/ep1.mkv" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <div class="episode-list">
+    <div class="episode-title">Scissor Word</div>
+    <div class="episode-buttons" id="episodes"></div>
+  </div>
+
+  <script>
+    const video = document.getElementById('player');
+    const epContainer = document.getElementById('episodes');
+
+    // ✅ Dynamically create buttons for ep1.mkv to ep26.mkv
+    for (let i = 1; i <= 26; i++) {
+      const btn = document.createElement('button');
+      btn.textContent = i;
+      btn.onclick = () => {
+        video.src = `episodes/ep${i}.mp4`;
+        video.play();
+      };
+      epContainer.appendChild(btn);
+    }
+  </script>
+
+</body>
+</html>
